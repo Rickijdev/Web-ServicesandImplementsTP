@@ -1,6 +1,6 @@
 # Nexo Automatización — proyecto de Ricky
 
-Una web de presentación hecha con **HTML5, CSS y JavaScript puro**. No usa React, no requiere compilación y no depende de servicios externos para cargar las imágenes, los estilos o las fuentes.
+Una web de presentación hecha con **HTML5, CSS y JavaScript puro**. No usa React ni requiere compilación. La web pública carga sus imágenes, estilos y fuentes de forma local; el nuevo panel privado de clientes usa los módulos web oficiales de Firebase.
 
 ## Abrir en VS Code
 
@@ -17,6 +17,56 @@ npm run dev
 
 Abre `http://localhost:4173`. **No necesitas ejecutar `npm install`.** Este servidor escucha solo en tu computadora. Para detenerlo, presiona `Ctrl+C`. Recarga el navegador después de guardar cambios; para recarga automática usa Live Server.
 
+
+## Panel privado de clientes con Firebase
+
+El proyecto ahora incluye un **CRM privado** en `dist/admin.html`. Sirve para que Ricky registre y administre sus propios clientes. Incluye:
+
+- Inicio de sesión con **Firebase Authentication** (correo y contraseña).
+- Base de datos en **Cloud Firestore**.
+- Registrar, editar y eliminar clientes.
+- Buscar por nombre, teléfono, correo, dirección o servicio.
+- Filtrar por estado: Contactado, Cotizando, Activo o Finalizado.
+- Resumen de clientes y valor total registrado.
+- Exportación de los registros a CSV.
+- Diseño responsive para escritorio y celular.
+
+La página pública sigue funcionando aunque Firebase todavía no esté configurado. El acceso al panel está al pie de la web como **Acceso administrador**, o directamente en `admin.html`.
+
+### Configurar Firebase por primera vez
+
+1. Entra a **Firebase Console** y crea un proyecto (por ejemplo, `nexo-automatizacion`).
+2. Dentro del proyecto, crea una **aplicación Web** con el icono `</>`.
+3. Firebase mostrará un objeto `firebaseConfig`. Copia sus valores en:
+
+   `dist/firebase-config.js`
+
+   Sustituye todos los textos que empiezan por `REEMPLAZA_`.
+
+4. Ve a **Authentication → Sign-in method** y activa **Email/Password**.
+5. Ve a **Authentication → Users → Add user** y crea **solo tu usuario administrador** con tu correo y contraseña.
+6. En la tabla de usuarios, copia el **User UID** de ese usuario.
+7. Abre `firestore.rules` y sustituye:
+
+   `REEMPLAZA_CON_TU_UID`
+
+   por ese UID exacto.
+
+8. En Firebase, entra a **Firestore Database**, crea la base de datos y abre la pestaña **Rules**. Copia el contenido de `firestore.rules` y pulsa **Publish**.
+9. Abre el proyecto con Live Server o `npm run dev`, entra a `admin.html` e inicia sesión con el usuario que creaste.
+
+No necesitas crear manualmente la colección `clientes`: aparecerá automáticamente al registrar el primer cliente.
+
+### Seguridad importante
+
+El archivo `firebase-config.js` se carga en el navegador, por lo que su configuración web no debe tratarse como una contraseña. La protección real de los datos está en las **reglas de Firestore**. El archivo incluido bloquea los clientes para todos salvo el UID que tú indiques.
+
+No cambies las reglas a `allow read, write: if true;` en una web publicada. Tampoco añadas una pantalla pública de registro de usuarios si quieres que el panel siga siendo solo tuyo.
+
+### Publicar también con Firebase Hosting (opcional)
+
+Se incluye `firebase.json` para que, si más adelante instalas Firebase CLI, puedas publicar la carpeta `dist` y las reglas de Firestore desde el mismo proyecto. Esto es opcional: el CRM funciona con cualquier hosting estático mientras tenga internet para conectarse a Firebase.
+
 ## Qué archivo editar
 
 | Archivo | Qué contiene |
@@ -27,6 +77,12 @@ Abre `http://localhost:4173`. **No necesitas ejecutar `npm install`.** Este serv
 | `dist/experience.css` | Nueva identidad visual, tamaños amplios, perfil de Ricky y escenas de scroll. |
 | `dist/app.js` | Demostraciones, visor, comparador y mensajes para WhatsApp. |
 | `dist/motion.js` | Entradas al hacer scroll, paralaje, barra de avance y recorrido de tres escenas. |
+| `dist/admin.html` | Panel privado de clientes y formulario de registro. |
+| `dist/admin.css` | Diseño del panel administrativo. |
+| `dist/admin.js` | Login, CRUD de clientes, filtros, estadísticas y exportación CSV. |
+| `dist/firebase-config.js` | Configuración de la app Web de Firebase; debes completar sus valores. |
+| `firestore.rules` | Reglas que restringen la colección `clientes` a tu UID. |
+| `firebase.json` | Configuración opcional para Firebase Hosting y despliegue de reglas. |
 | `dist/assets/` | Fotografía, fuentes, favicon y portada para compartir. |
 | `scripts/serve.mjs` | Servidor local opcional, sin dependencias. |
 | `.vscode/` | Configuración sugerida para VS Code y Live Server. |

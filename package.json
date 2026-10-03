@@ -7,7 +7,9 @@
   "scripts": {
     "dev": "node scripts/serve.mjs",
     "start": "node scripts/serve.mjs",
-    "check": "node --check dist/app.js && node --check dist/motion.js && node --check scripts/serve.mjs"
+    "check": "node --check dist/app.js && node --check dist/motion.js && node --check dist/admin.js && node --check dist/firebase-config.js && node --check scripts/serve.mjs"
   },
-  "engines": { "node": ">=18" }
+  "engines": {
+    "node": ">=18"
+  }
 }

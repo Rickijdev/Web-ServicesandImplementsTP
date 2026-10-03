@@ -1,0 +1,21 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // PASO OBLIGATORIO:
+    // Reemplaza REEMPLAZA_CON_TU_UID por el UID de tu usuario administrador
+    // (Firebase Console > Authentication > Users > User UID).
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.uid == "REEMPLAZA_CON_TU_UID";
+    }
+
+    match /clientes/{clienteId} {
+      allow read, create, update, delete: if isAdmin();
+    }
+
+    // Todo lo demás queda bloqueado desde el cliente web.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
