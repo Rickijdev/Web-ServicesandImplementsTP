@@ -7,12 +7,13 @@
 // en firestore.rules, que debe restringirse a tu UID de administrador.
 
 export const firebaseConfig = {
-  apiKey: "REEMPLAZA_API_KEY",
-  authDomain: "REEMPLAZA_PROJECT_ID.firebaseapp.com",
-  projectId: "REEMPLAZA_PROJECT_ID",
-  storageBucket: "REEMPLAZA_PROJECT_ID.firebasestorage.app",
-  messagingSenderId: "REEMPLAZA_MESSAGING_SENDER_ID",
-  appId: "REEMPLAZA_APP_ID"
+  apiKey: "AIzaSyAVL5c3yrnOplatnK7NXjEQS8VDUBp05cQ",
+  authDomain: "servicesandesp32.firebaseapp.com",
+  projectId: "servicesandesp32",
+  storageBucket: "servicesandesp32.firebasestorage.app",
+  messagingSenderId: "580306930699",
+  appId: "1:580306930699:web:ed4be7eff6b317f2a2cb0e",
+  measurementId: "G-X1DMTV5P6N"
 };
 
 export const firebaseReady = Object.values(firebaseConfig).every(
