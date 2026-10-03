@@ -1,0 +1,20 @@
+dm-sans-regular.ttf
+Copyright 2014 The DM Sans Project Authors (https://github.com/googlefonts/dm-fonts)
+
+
+
+https://scripts.sil.org/OFL
+
+dm-sans-semibold.ttf
+Copyright 2014 The DM Sans Project Authors (https://github.com/googlefonts/dm-fonts)
+
+
+
+https://scripts.sil.org/OFL
+
+instrument-serif-italic.ttf
+Copyright 2022 The Instrument Serif Project Authors (https://github.com/Instrument/instrument-serif)
+
+
+
+https://scripts.sil.org/OFL
