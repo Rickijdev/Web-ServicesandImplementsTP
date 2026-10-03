@@ -36,6 +36,7 @@ El orden de las hojas de estilo es intencional: base → componentes → experie
 ## Cambios habituales
 
 - **Nombre y presentación:** busca `Ricky` y la sección `id="sobre-mi"` en `index.html`. El saludo preparado de WhatsApp está también en `app.js`.
+- **Foto de Ricky y logo UNT:** están en `dist/assets/ricky.webp` y `dist/assets/unt-logo.webp`. La foto conserva la imagen proporcionada; el `viewBox` del SVG con clase `founder-photo` ajusta el encuadre dentro de la tarjeta. Si sustituyes la foto, actualiza también sus dimensiones y ese encuadre.
 - **WhatsApp:** el número es `51938681643`. Cámbialo en los enlaces de `index.html` y en `whatsappNumber`, al inicio de `app.js`.
 - **Paleta:** las variables al principio de `experience.css` controlan los colores principales. Las ilustraciones SVG también tienen colores propios en `index.html`.
 - **Precios:** revisa las tarjetas, las opciones del comparador, la consulta y las preguntas frecuentes en `index.html`; revisa también `typeLabels` en `app.js`. El comparador calcula con el valor elegido en sus opciones.
@@ -69,5 +70,6 @@ Si cambias el dominio, actualiza `canonical`, `og:url` y `og:image` dentro de `d
 - Fotografía de ambiente: **Artem Artemov**, en Unsplash: https://unsplash.com/photos/warm-sunlight-streams-into-a-modern-living-room-dGZWlC4TXF0
 - Fuentes locales: **DM Sans** e **Instrument Serif**, obtenidas de Google Fonts.
 - Ilustraciones: SVG editables incluidos en `index.html`.
+- Fotografía personal de Ricky y escudo de la UNT: archivos proporcionados por Ricky e incluidos como recursos locales.
 
 La fotografía es ilustrativa. El perfil presenta la formación universitaria en curso de Ricky; no se incluyen testimonios, títulos profesionales terminados ni certificaciones no proporcionadas.

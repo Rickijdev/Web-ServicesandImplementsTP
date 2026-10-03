@@ -886,7 +886,7 @@ body {
   transform-origin:left;
   will-change:transform
 }
-/* A full-size personal introduction, with no invented portrait or testimonials. */
+/* Ricky's supplied portrait, framed in the page without changing the photograph. */
 .founder-section {
   padding-block:150px 85px;
   background:#f5f7fc;
@@ -912,11 +912,20 @@ body {
   content:'';
   position:absolute;
   inset:0;
-  z-index:-1;
-  background-image:linear-gradient(#4b71aa15 1px,transparent 1px),linear-gradient(90deg,#4b71aa15 1px,transparent 1px);
-  background-size:34px 34px
+  z-index:1;
+  pointer-events:none;
+  background:linear-gradient(180deg,rgba(10,20,41,.78) 0%,rgba(10,20,41,0) 24%,rgba(10,20,41,0) 40%,rgba(10,20,41,.9) 77%,#0d1b36 100%)
+}
+.founder-photo {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:0
 }
 .founder-card-top {
+  position:relative;
+  z-index:2;
   padding:27px 27px 0;
   display:flex;
   justify-content:space-between;
@@ -924,7 +933,7 @@ body {
   gap:15px;
   font-size:7px;
   letter-spacing:1.3px;
-  color:#8da7d3
+  color:#e4ecff
 }
 .founder-status {
   display:flex;
@@ -980,6 +989,7 @@ body {
 }
 .founder-card-bottom {
   position:absolute;
+  z-index:2;
   bottom:73px;
   left:35px;
   right:35px
@@ -995,12 +1005,12 @@ body {
 }
 .founder-card-bottom>p {
   font-size:14px;
-  color:#a6bee5;
+  color:#c7d7f1;
   margin-top:12px
 }
 .founder-location {
   font-size:11px;
-  color:#7896c8;
+  color:#a7bfe6;
   display:flex;
   align-items:center;
   gap:8px;
@@ -1012,11 +1022,12 @@ body {
 }
 .founder-card-coordinate {
   position:absolute;
+  z-index:2;
   left:35px;
   bottom:25px;
   font-size:7px;
   letter-spacing:2px;
-  color:#6482b5
+  color:#9ab4dc
 }
 .founder-copy>.eyebrow {
   font-size:9px;
@@ -1063,6 +1074,22 @@ body {
   border:1px solid #9fb5db;
   border-radius:4px;
   color:#345890
+}
+.founder-academic>.founder-academic-mark {
+  display:grid;
+  place-items:center;
+  flex:0 0 100px;
+  width:100px;
+  height:92px;
+  padding:5px;
+  background:#fff;
+  border:1px solid #d3deef;
+  border-radius:9px
+}
+.founder-academic-mark>img {
+  width:100%;
+  height:100%;
+  object-fit:contain
 }
 .founder-academic strong {
   display:block;
@@ -2133,7 +2160,7 @@ body {
     gap:42px
   }
   .founder-card {
-    height:455px
+    height:clamp(455px,118vw,590px)
   }
   .founder-card-top {
     display:flex;
@@ -2211,6 +2238,12 @@ body {
   }
   .founder-academic>span {
     font-size:17px
+  }
+  .founder-academic>.founder-academic-mark {
+    flex-basis:82px;
+    width:82px;
+    height:82px;
+    padding:3px
   }
   .founder-academic strong {
     font-size:14px
