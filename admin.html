@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="es-PE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a1429">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Nexo — Panel de clientes</title>
+  <meta name="description" content="Panel privado de administración de clientes de Nexo Automatización.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/dm-sans-regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="assets/dm-sans-semibold.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="assets/instrument-serif-italic.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="admin.css">
+  <script type="module" src="admin.js"></script>
+</head>
+<body>
+  <div class="admin-bg" aria-hidden="true"><span></span><span></span></div>
+
+  <main class="login-shell" id="login-view">
+    <section class="login-card" aria-labelledby="login-title">
+      <a class="admin-brand" href="index.html" aria-label="Volver a Nexo">
+        <span class="brand-mark" aria-hidden="true"><span></span></span>
+        <span>nexo<span class="brand-dot">.</span><small>AUTOMATIZACIÓN</small></span>
+      </a>
+      <div class="login-copy">
+        <span class="eyebrow"><i></i> ÁREA PRIVADA</span>
+        <h1 id="login-title">Tus clientes,<br><em>en un solo lugar.</em></h1>
+        <p>Registra instalaciones, guarda datos de contacto y consulta el estado de cada cliente.</p>
+      </div>
+
+      <div class="setup-alert" id="setup-alert" hidden>
+        <strong>Firebase todavía no está configurado.</strong>
+        <span>Completa <code>dist/firebase-config.js</code> y sigue la guía incluida en el README.</span>
+      </div>
+
+      <form class="login-form" id="login-form" novalidate>
+        <label>
+          <span>Correo de administrador</span>
+          <input id="login-email" name="email" type="email" autocomplete="username" placeholder="tu@correo.com" required>
+        </label>
+        <label>
+          <span>Contraseña</span>
+          <input id="login-password" name="password" type="password" autocomplete="current-password" placeholder="••••••••" minlength="6" required>
+        </label>
+        <button class="primary-button" id="login-button" type="submit">
+          <span>Entrar al panel</span><span aria-hidden="true">→</span>
+        </button>
+        <p class="form-message" id="login-message" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="login-foot">
+        <span>Solo para uso interno de Nexo.</span>
+        <a href="index.html">Volver a la web ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <div class="dashboard" id="dashboard-view" hidden>
+    <aside class="sidebar" id="sidebar">
+      <a class="admin-brand sidebar-brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true"><span></span></span>
+        <span>nexo<span class="brand-dot">.</span><small>CLIENTES</small></span>
+      </a>
+      <nav class="side-nav" aria-label="Panel de administración">
+        <a class="is-active" href="#clientes"><span class="nav-icon">⌂</span><span>Clientes</span></a>
+        <button id="new-client-side" type="button"><span class="nav-icon">＋</span><span>Nuevo cliente</span></button>
+      </nav>
+      <div class="side-account">
+        <span class="avatar" id="admin-avatar">R</span>
+        <div><strong>Administrador</strong><span id="admin-email">—</span></div>
+        <button id="logout-button" type="button" title="Cerrar sesión" aria-label="Cerrar sesión">↗</button>
+      </div>
+    </aside>
+
+    <main class="workspace" id="clientes">
+      <header class="workspace-header">
+        <button class="mobile-menu" id="sidebar-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        <div>
+          <span class="eyebrow"><i></i> CRM INTERNO</span>
+          <h1>Panel de <em>clientes.</em></h1>
+          <p>Un registro simple para saber a quién atendiste, qué servicio tiene y en qué estado está.</p>
+        </div>
+        <button class="primary-button header-add" id="new-client" type="button"><span>＋ Registrar cliente</span></button>
+      </header>
+
+      <section class="stats-grid" aria-label="Resumen de clientes">
+        <article class="stat-card"><span>Total de clientes</span><strong id="stat-total">0</strong><small>registros guardados</small></article>
+        <article class="stat-card"><span>Clientes activos</span><strong id="stat-active">0</strong><small>con servicio activo</small></article>
+        <article class="stat-card"><span>En seguimiento</span><strong id="stat-followup">0</strong><small>contactados o cotizando</small></article>
+        <article class="stat-card"><span>Valor registrado</span><strong id="stat-value">S/0</strong><small>suma de montos ingresados</small></article>
+      </section>
+
+      <section class="clients-panel" aria-labelledby="client-list-title">
+        <div class="panel-top">
+          <div>
+            <span class="panel-kicker">BASE DE CLIENTES</span>
+            <h2 id="client-list-title">Todos tus registros</h2>
+          </div>
+          <div class="panel-actions">
+            <label class="search-box">
+              <span aria-hidden="true">⌕</span>
+              <input id="client-search" type="search" placeholder="Buscar por nombre, teléfono o correo" autocomplete="off">
+            </label>
+            <label class="select-wrap">
+              <span class="sr-only">Filtrar por estado</span>
+              <select id="status-filter">
+                <option value="todos">Todos los estados</option>
+                <option value="contactado">Contactado</option>
+                <option value="cotizando">Cotizando</option>
+                <option value="activo">Activo</option>
+                <option value="finalizado">Finalizado</option>
+              </select>
+            </label>
+            <button class="ghost-button" id="export-csv" type="button">Exportar CSV</button>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Cliente</th><th>Contacto</th><th>Servicio</th><th>Estado</th><th>Monto</th><th>Registro</th><th><span class="sr-only">Acciones</span></th></tr></thead>
+            <tbody id="client-table-body"></tbody>
+          </table>
+          <div class="empty-state" id="empty-state" hidden>
+            <span class="empty-mark">N</span>
+            <h3 id="empty-title">Aún no tienes clientes registrados.</h3>
+            <p id="empty-copy">Añade el primero y aparecerá aquí.</p>
+            <button class="primary-button" id="empty-add" type="button">Registrar primer cliente</button>
+          </div>
+          <div class="loading-state" id="loading-state"><span class="spinner"></span><p>Cargando clientes…</p></div>
+        </div>
+        <p class="panel-message" id="panel-message" role="status" aria-live="polite"></p>
+      </section>
+    </main>
+  </div>
+
+  <dialog class="client-dialog" id="client-dialog">
+    <form id="client-form" method="dialog" novalidate>
+      <div class="dialog-head">
+        <div><span class="panel-kicker" id="dialog-kicker">NUEVO REGISTRO</span><h2 id="dialog-title">Registrar cliente</h2></div>
+        <button class="icon-button" id="close-dialog" type="button" aria-label="Cerrar">×</button>
+      </div>
+
+      <input type="hidden" id="client-id">
+      <div class="form-grid">
+        <label class="field field-wide"><span>Nombre completo *</span><input id="client-name" type="text" maxlength="100" placeholder="Ej. María Torres" required></label>
+        <label class="field"><span>Teléfono *</span><input id="client-phone" type="tel" maxlength="30" placeholder="Ej. 987 654 321" required></label>
+        <label class="field"><span>Correo</span><input id="client-email" type="email" maxlength="120" placeholder="cliente@correo.com"></label>
+        <label class="field field-wide"><span>Dirección / ubicación</span><input id="client-address" type="text" maxlength="180" placeholder="Distrito, ciudad o referencia"></label>
+        <label class="field"><span>Servicio</span><select id="client-service"><option value="Automatización de puerta">Automatización de puerta</option><option value="Mantenimiento">Mantenimiento</option><option value="Diagnóstico">Diagnóstico</option><option value="Otro proyecto">Otro proyecto</option></select></label>
+        <label class="field"><span>Estado</span><select id="client-status"><option value="contactado">Contactado</option><option value="cotizando">Cotizando</option><option value="activo">Activo</option><option value="finalizado">Finalizado</option></select></label>
+        <label class="field"><span>Monto (S/)</span><input id="client-price" type="number" min="0" max="999999" step="0.01" inputmode="decimal" placeholder="0.00"></label>
+        <label class="field"><span>Fecha de instalación</span><input id="client-install-date" type="date"></label>
+        <label class="field field-wide"><span>Notas</span><textarea id="client-notes" rows="4" maxlength="800" placeholder="Detalles del trabajo, modelo instalado, observaciones…"></textarea></label>
+      </div>
+      <p class="form-message dialog-message" id="client-form-message" role="status" aria-live="polite"></p>
+      <div class="dialog-actions">
+        <button class="ghost-button" id="cancel-dialog" type="button">Cancelar</button>
+        <button class="primary-button" id="save-client" type="submit"><span>Guardar cliente</span></button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="confirm-dialog" id="delete-dialog">
+    <div>
+      <span class="danger-mark">!</span>
+      <h2>Eliminar cliente</h2>
+      <p>Este registro se eliminará de Firestore y no se puede deshacer.</p>
+      <strong id="delete-client-name">—</strong>
+      <div class="dialog-actions"><button class="ghost-button" id="cancel-delete" type="button">Cancelar</button><button class="danger-button" id="confirm-delete" type="button">Eliminar</button></div>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
