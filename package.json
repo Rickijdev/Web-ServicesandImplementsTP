@@ -7,9 +7,15 @@
   "scripts": {
     "dev": "node scripts/serve.mjs",
     "start": "node scripts/serve.mjs",
-    "check": "node --check dist/app.js && node --check dist/motion.js && node --check dist/admin.js && node --check dist/firebase-config.js && node --check scripts/serve.mjs"
+    "check": "node --check dist/app.js && node --check dist/motion.js && node --check dist/admin.js && node --check dist/firebase-config.js && node --check scripts/serve.mjs",
+    "predeploy": "npm run check",
+    "deploy": "gh-pages -d dist --nojekyll"
   },
   "engines": {
     "node": ">=18"
-  }
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  },
+  "homepage": "https://rickijdev.github.io/Web-ServicesandImplementsTP/"
 }

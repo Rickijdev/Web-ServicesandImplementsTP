@@ -129,3 +129,71 @@ Si cambias el dominio, actualiza `canonical`, `og:url` y `og:image` dentro de `d
 - Fotografía personal de Ricky y escudo de la UNT: archivos proporcionados por Ricky e incluidos como recursos locales.
 
 La fotografía es ilustrativa. El perfil presenta la formación universitaria en curso de Ricky; no se incluyen testimonios, títulos profesionales terminados ni certificaciones no proporcionadas.
+
+## Publicar en GitHub Pages
+
+Este proyecto ya está preparado para publicarse como **GitHub Pages** desde el repositorio `Rickijdev/Web-ServicesandImplementsTP`.
+
+La URL pública esperada es:
+
+`https://rickijdev.github.io/Web-ServicesandImplementsTP/`
+
+El panel privado quedará en:
+
+`https://rickijdev.github.io/Web-ServicesandImplementsTP/admin.html`
+
+### Primera publicación
+
+1. Abre una terminal en la raíz de `Nexo-Automatizacion`.
+2. Si acabas de extraer el proyecto y no existe `node_modules`, ejecuta:
+
+   ```bash
+   npm install
+   ```
+
+3. Publica la carpeta `dist`:
+
+   ```bash
+   npm run deploy
+   ```
+
+   El comando ejecuta primero `npm run check` y luego crea/actualiza la rama `gh-pages` con el contenido público.
+
+4. En GitHub entra al repositorio → **Settings → Pages**.
+5. En **Build and deployment**, selecciona **Deploy from a branch**.
+6. Elige la rama **gh-pages** y la carpeta **/(root)**. Guarda los cambios.
+
+Después de unos minutos, GitHub mostrará la URL pública.
+
+### Actualizar la web después
+
+Guarda primero tus cambios normales en `main`:
+
+```bash
+git add .
+git commit -m "Actualizar web"
+git push
+```
+
+Luego publica la versión nueva:
+
+```bash
+npm run deploy
+```
+
+### Firebase en GitHub Pages
+
+El panel sigue usando Firebase directamente desde el navegador; GitHub Pages solo hospeda los archivos estáticos. En **Firebase Console → Authentication → Settings/Configuración → Authorized domains/Dominios autorizados**, agrega:
+
+`rickijdev.github.io`
+
+No agregues `/Web-ServicesandImplementsTP` en ese campo: Firebase solicita únicamente el dominio.
+
+Las reglas de Firestore no se publican con GitHub Pages. Deben seguir configuradas y publicadas desde Firebase Console. El archivo `firestore.rules` queda en el proyecto como copia de referencia para tu configuración.
+
+### Archivos añadidos para GitHub Pages
+
+- `.gitignore`: evita subir `node_modules`, archivos de entorno y registros locales.
+- `dist/.nojekyll`: evita que GitHub Pages procese la carpeta con Jekyll.
+- `package.json`: incluye `homepage`, `predeploy` y `deploy`; el despliegue usa `--nojekyll`.
+- `dist/index.html`: `canonical`, `og:url` y `og:image` apuntan a la dirección de GitHub Pages.
