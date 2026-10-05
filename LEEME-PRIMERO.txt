@@ -1,0 +1,47 @@
+NEXO AUTOMATIZACIÓN — EDICIÓN 4.1.1 · NUEVO DISEÑO
+
+PARA VER LA WEB
+1. Extrae todo el ZIP.
+2. Abre ABRIR-WEB.html con doble clic.
+   También puedes abrir dist/ABRIR-WEB.html.
+
+PARA EDITARLA EN VS CODE
+Necesitas Node.js 22.12 o superior.
+Abre la carpeta Nexo-Automatizacion y ejecuta:
+
+    npm ci
+    npm run dev
+
+PARA VER LA VERSIÓN COMPILADA Y EL PANEL
+    npm start
+
+Abre http://localhost:4173
+Panel: http://localhost:4173/admin.html
+Este comando no necesita npm install.
+
+DESPUÉS DE EDITAR / ANTES DE PUBLICAR
+    npm run build
+
+Publica el contenido de dist.
+La carpeta src contiene el código editable.
+
+INCLUYE
+React + TypeScript + Vite + GSAP / ScrollTrigger + Three.js.
+Barra de desplazamiento oculta; scroll con rueda, teclado y gestos.
+Nueva paleta: azul petróleo, arena y cobre.
+Portada de fotografías superpuestas inspirada en Stock Dutch Design.
+Galería de interiores con un estilo fotográfico coherente.
+Enfoque para hogares, consultorios, oficinas y negocios.
+Cuatro modelos independientes: ESP32, servo, brazo y carcasa.
+Selección corregida; controles de giro, zoom, acción y reinicio.
+Vista ilustrada automática si el equipo no admite WebGL 2.
+Demostración interactiva y consulta por WhatsApp.
+Panel de clientes Firebase y configuración original conservados.
+
+La demo no controla una puerta real.
+El panel requiere servidor/hosting, conexión y permisos Firebase.
+La vista de doble clic corresponde a la última compilación.
+
+La compilación, las interacciones DOM y la geometría se comprobaron.
+Queda pendiente la revisión visual y del render GPU en un navegador real.
+Más detalles en README.md.

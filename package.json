@@ -1,21 +1,35 @@
 {
   "name": "nexo-automatizacion",
-  "version": "2.0.0",
+  "version": "4.1.1",
   "private": true,
-  "description": "Web de Nexo Automatización, creada para Ricky. HTML, CSS y JavaScript sin dependencias.",
   "type": "module",
+  "description": "Nexo \u2014 apertura desde el celular para hogares, consultorios y negocios.",
   "scripts": {
-    "dev": "node scripts/serve.mjs",
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build && node scripts/create-preview.mjs",
+    "preview": "vite preview --host 127.0.0.1",
     "start": "node scripts/serve.mjs",
-    "check": "node --check dist/app.js && node --check dist/motion.js && node --check dist/admin.js && node --check dist/firebase-config.js && node --check scripts/serve.mjs",
-    "predeploy": "npm run check",
+    "check": "tsc --noEmit && node --check public/admin.js && node --check public/firebase-config.js",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist --nojekyll"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=22.12.0"
+  },
+  "dependencies": {
+    "gsap": "3.15.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "three": "0.186.1"
   },
   "devDependencies": {
-    "gh-pages": "^6.3.0"
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/three": "^0.186.0",
+    "@vitejs/plugin-react": "^6.0.0",
+    "gh-pages": "^6.3.0",
+    "typescript": "^5.9.0",
+    "vite": "8.3.2"
   },
   "homepage": "https://rickijdev.github.io/Web-ServicesandImplementsTP/"
 }

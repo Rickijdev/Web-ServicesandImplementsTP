@@ -1,0 +1,114 @@
+{
+  "version": "4.1.1",
+  "interactions": [
+    {
+      "mode": "desktop GSAP branch",
+      "result": "passed",
+      "checks": [
+        "initial render",
+        "4 use cases",
+        "unique IDs / internal links",
+        "door demonstration",
+        "4 unique models / repeated selection / action cancellation / zoom / rotation / reset / keyboard",
+        "process selection",
+        "mobile menu / Escape",
+        "form retains values",
+        "WhatsApp draft / destination / content",
+        "draft invalidation",
+        "price comparison",
+        "plan preselection",
+        "credits dialog",
+        "motion preference",
+        "local image references",
+        "no external request / runtime error"
+      ]
+    },
+    {
+      "mode": "reduced motion",
+      "result": "passed",
+      "checks": [
+        "initial render",
+        "4 use cases",
+        "unique IDs / internal links",
+        "door demonstration",
+        "4 unique models / repeated selection / action cancellation / zoom / rotation / reset / keyboard",
+        "process selection",
+        "mobile menu / Escape",
+        "form retains values",
+        "WhatsApp draft / destination / content",
+        "draft invalidation",
+        "price comparison",
+        "plan preselection",
+        "credits dialog",
+        "motion preference",
+        "local image references",
+        "no external request / runtime error"
+      ]
+    }
+  ],
+  "models": [
+    {
+      "id": "chip",
+      "meshes": 119,
+      "vertices": 242444,
+      "size": [
+        1.7999999523162842,
+        3.149999953061342,
+        0.7750000041723251
+      ],
+      "allResourcesReleased": true
+    },
+    {
+      "id": "servo",
+      "meshes": 37,
+      "vertices": 44211,
+      "size": [
+        2.3494550132751466,
+        3.45815034027432,
+        1.346000011973083
+      ],
+      "allResourcesReleased": true
+    },
+    {
+      "id": "arm",
+      "meshes": 22,
+      "vertices": 51372,
+      "size": [
+        1.767868081275976,
+        2.717878285639835,
+        0.5989999878406524
+      ],
+      "allResourcesReleased": true
+    },
+    {
+      "id": "case",
+      "meshes": 38,
+      "vertices": 69592,
+      "size": [
+        2.736799987411499,
+        2.7499999583005907,
+        1.030479997947812
+      ],
+      "allResourcesReleased": true
+    }
+  ],
+  "assetReferences": "passed",
+  "offlinePreviewFonts": "4 embedded fonts",
+  "firebaseLogic": "unchanged",
+  "visualBrowserAndGPUReview": "pending; local preview blocked by environment",
+  "palette": {
+    "azulPetroleo": "#173d46",
+    "portada": "#3b6470",
+    "arena": "#dfd8c8",
+    "cobre": "#c3a081",
+    "fondo": "#f4f0e7"
+  },
+  "paletteUpdateScope": "CSS, tonos de iluminación y sombras del visor, favicon, portada social y metadatos. Pruebas funcionales de la edición 4.0 conservadas; sin cambios de lógica.",
+  "paletteValidation": {
+    "build": "passed",
+    "oldPrimaryPalette": "removed",
+    "mainTextContrast": "4.5:1 or greater for checked foreground/background pairs",
+    "visualBrowserReview": "pending; local browser restrictions unchanged"
+  },
+  "scrollbarUpdate": "Barra principal oculta con scrollbar-width y ::-webkit-scrollbar; sin bloquear overflow ni interceptar eventos. Compilación comprobada; revisión visual pendiente por la restricción del entorno."
+}
