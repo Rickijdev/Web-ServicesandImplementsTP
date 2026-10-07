@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { spaces, plans, faqs, generalContact } from "./content";
 import { useMotionPreference, useScrollExperience } from "./hooks/useMotion";
 import Hero from "./components/Hero";
+import AnalyticsPreference from "./components/AnalyticsPreference";
 import Icon from "./components/Icon";
 import { Process, Technology } from "./components/Experience";
 import Contact, { type Choice } from "./components/Contact";
@@ -482,6 +483,7 @@ export default function App() {
               Créditos y privacidad
             </button>
             <a href="./admin.html">Acceso administrador</a>
+            <AnalyticsPreference />
             <button
               type="button"
               aria-pressed={motion.reduced}
@@ -540,9 +542,17 @@ export default function App() {
           evalúan para cada caso.
         </p>
         <p>
-          El formulario no almacena tus datos ni utiliza analítica publicitaria.
-          Genera un enlace para que revises tu consulta y decidas enviarla en
-          WhatsApp, sujeto a sus condiciones de privacidad.
+          El formulario no guarda tus consultas. Prepara un mensaje para que
+          decidas enviarlo en WhatsApp, sujeto a sus condiciones de privacidad.
+          El nombre, la ubicación y el texto de tu consulta no se envían a
+          Analytics.
+        </p>
+        <p>
+          En la web publicada, Google Analytics registra estadísticas de
+          navegación únicamente si aceptas. Se desactivan las funciones de
+          personalización publicitaria. Puedes rechazar las estadísticas o
+          cambiar tu decisión desde «Preferencias de estadísticas», al pie de
+          página. La elección se guarda en este navegador.
         </p>
         <p>
           Tipografías DM Sans y Cormorant Garamond, con licencias incluidas.

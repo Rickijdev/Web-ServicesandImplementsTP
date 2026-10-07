@@ -1,4 +1,4 @@
-# Nexo Automatización · edición 4.1.1
+# Nexo Automatización · edición 4.2.0
 
 Web rediseñada para cualquier persona que quiera accionar su puerta desde el celular: hogares, consultorios odontológicos, estudios jurídicos, oficinas, negocios, estudios y alojamientos.
 
@@ -98,7 +98,7 @@ Este comando comprueba TypeScript, reconstruye `dist` y actualiza la vista de do
 - Conserva referencias desde **S/150** para pulsador y **S/210** para perilla, sujetas a evaluación.
 - Preselecciona el espacio y el mecanismo en el formulario.
 - Prepara un mensaje de WhatsApp. La persona pulsa **Abrir mi consulta en WhatsApp**, revisa el texto y lo envía allí.
-- No guarda consultas ni añade analítica a la página pública.
+- No guarda consultas. Google Analytics mide navegación solo después de aceptar estadísticas; las vistas locales y el panel administrativo no envían visitas.
 - Mantiene el panel privado de clientes y su enlace al pie.
 
 ## Movimiento y accesibilidad
@@ -110,6 +110,33 @@ El scroll sigue siendo el del navegador. No se captura la rueda ni se obliga a u
 En escritorio amplio, con suficiente altura, el proceso queda visible mientras avanzan sus tres pasos y los objetos se desplazan a velocidades distintas. En móvil, ventanas bajas y modo de movimiento reducido, el proceso se presenta de forma normal y los pasos se eligen con botones.
 
 Se respeta `prefers-reduced-motion`. El pie permite pausar el movimiento. Las pestañas admiten flechas, Inicio y Fin; el menú se cierra con Escape. Hay etiquetas de formulario, estados anunciados, foco visible y enlace para saltar al contenido.
+
+## Estadísticas de visitas · Google Analytics
+
+Esta edición incorpora el ID **G-X1DMTV5P6N**, mostrado en tu captura y coincidente con el `measurementId` de tu proyecto Firebase. No hace falta crear otra propiedad.
+
+1. Publica esta versión en GitHub Pages mediante tu flujo habitual. Puedes copiar el proyecto dentro de tu repositorio y publicar con el workflow incluido, o publicar el contenido de `dist` con el método estático que ya uses.
+2. Abre `https://rickijdev.github.io/Web-ServicesandImplementsTP/` y elige **Aceptar estadísticas**. Si ya rechazaste, cambia la opción en **Preferencias de estadísticas**, al pie de la página.
+3. En Google Analytics, selecciona la propiedad **servicesandesp32** y abre **Ver en tiempo real**.
+4. Prueba sin un bloqueador de analítica para esa visita. La recogida puede tardar hasta 30 minutos en empezar; los informes generales pueden actualizarse después del informe en tiempo real.
+
+El cambio del ZIP no publica automáticamente tu repositorio. Las visitas anteriores no se recuperan. Abrir `ABRIR-WEB.html` o `localhost` tampoco envía datos, para no sumar tus pruebas al conteo.
+
+### Implementación y privacidad
+
+- `src/analytics.ts` contiene el ID, el dominio y la ruta de producción. Al cambiar de dominio, actualiza `analyticsAvailable()`.
+- Se usa la etiqueta oficial de Google, cargada únicamente después de aceptar. Una elección guardada se aplica en las siguientes visitas.
+- Se envía un `page_view` una sola vez por carga de página; los cambios de sección y los modelos no lo duplican.
+- Se desactivan Google signals y la personalización publicitaria. No se configura un identificador de usuario propio.
+- La URL de página se transmite sin parámetros de consulta ni fragmento; del referente solo se usa su origen. El parámetro `?v=2` no divide el conteo entre versiones.
+- El formulario conserva el enlace con el mensaje en estado de React y lo abre mediante un botón, sin exponer esa URL con datos personales a la medición automática de enlaces salientes.
+- La preferencia puede retirarse desde el pie; la etiqueta se desactiva y se eliminan las cookies de Nexo que el navegador permite borrar. La elección permanece en almacenamiento local.
+- El contador depende del consentimiento, de la conexión y de los bloqueadores. No representa necesariamente cada acceso realizado al servidor.
+- La captura original mostraba cero datos recibidos, no una prueba de cero visitas históricas.
+
+La integración se valida con pruebas locales que interceptan la carga del script; no se enviaron visitas de prueba a tu propiedad. **La recepción real debe confirmarse después de publicar.** La medición mejorada y la retención se gestionan en tu cuenta de Analytics.
+
+Referencias oficiales: [instalación](https://developers.google.com/tag-platform/gtagjs), [privacidad](https://developers.google.com/tag-platform/security/guides/privacy), [configuración](https://developers.google.com/analytics/devguides/collection/ga4/reference/config).
 
 ## Panel de clientes y Firebase
 
@@ -177,4 +204,4 @@ Abre la vista incluida antes de publicar para revisar el diseño y el visor en t
 - Modelos 3D e ilustraciones de respaldo creados en código para el proyecto; no corresponden a un plano de fabricación ni a una pieza comercial exacta.
 - Se conservan los recursos originales de la UNT, sin usarlos como sello comercial.
 
-Las dependencias y los recursos públicos están incluidos en la versión compilada. Se conserva un único bundle JavaScript para que `ABRIR-WEB.html` funcione sin servidor ni importaciones remotas; por eso el bundle incorpora también Three.js. Vite muestra un aviso de tamaño, sin impedir la compilación.
+Las dependencias de la interfaz y los recursos visuales están incluidos en la versión compilada. La etiqueta de Google Analytics se descarga de Google en producción después de aceptar estadísticas. Se conserva un único bundle JavaScript para que `ABRIR-WEB.html` funcione sin servidor ni importaciones remotas; por eso el bundle incorpora también Three.js. Vite muestra un aviso de tamaño, sin impedir la compilación.

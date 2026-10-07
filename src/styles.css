@@ -2830,3 +2830,60 @@ html[data-motion="reduced"] .is-acting .case-lid {
     min-height: 0 !important;
   }
 }
+
+/* Preferencia de estadísticas: solo aparece en la web publicada. */
+.analytics-notice {
+  position: fixed;
+  bottom: 22px;
+  left: 22px;
+  z-index: 150;
+  width: min(490px, calc(100% - 44px));
+  padding: 24px;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 55px #102c3326;
+}
+.analytics-notice strong {
+  font: 400 27px/1.1 var(--serif);
+}
+.analytics-notice p {
+  margin: 12px 0 8px;
+  font-size: 11px;
+  line-height: 1.7;
+}
+.analytics-notice a {
+  font-size: 9px;
+  text-decoration: underline;
+}
+.analytics-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+.analytics-actions button {
+  flex: 1;
+  padding: 12px 9px;
+  border: 1px solid var(--ink);
+  background: transparent;
+  font-size: 10px;
+  line-height: 1.4;
+}
+.analytics-actions button:last-child {
+  color: var(--cream);
+  background: var(--ink);
+}
+.analytics-actions button:hover {
+  box-shadow: inset 0 0 0 1px currentColor;
+}
+@media (max-width: 600px) {
+  .analytics-notice {
+    bottom: 12px;
+    left: 12px;
+    width: calc(100% - 24px);
+    padding: 20px;
+  }
+  .analytics-notice strong {
+    font-size: 25px;
+  }
+}

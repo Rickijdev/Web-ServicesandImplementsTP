@@ -1,5 +1,5 @@
 {
-  "version": "4.1.1",
+  "version": "4.2.0",
   "interactions": [
     {
       "mode": "desktop GSAP branch",
@@ -110,5 +110,18 @@
     "mainTextContrast": "4.5:1 or greater for checked foreground/background pairs",
     "visualBrowserReview": "pending; local browser restrictions unchanged"
   },
-  "scrollbarUpdate": "Barra principal oculta con scrollbar-width y ::-webkit-scrollbar; sin bloquear overflow ni interceptar eventos. Compilación comprobada; revisión visual pendiente por la restricción del entorno."
+  "scrollbarUpdate": "Barra principal oculta con scrollbar-width y ::-webkit-scrollbar; sin bloquear overflow ni interceptar eventos. Compilación comprobada; revisión visual pendiente por la restricción del entorno.",
+  "analytics": {
+    "status": "passed",
+    "checks": [
+      "No analytics script or events in offline, localhost, unconfigured hosts or other repositories",
+      "Explicit consent, one script and one page view, correct ID, redacted page/referrer URLs, ad features off, withdrawal, targeted cookie removal and cross-tab choice",
+      "Returning consent and unavailable storage handled"
+    ],
+    "network": "No external requests sent; Google script intercepted by test DOM",
+    "measurementId": "G-X1DMTV5P6N",
+    "consentUI": "passed",
+    "liveReception": "Pending publication and validation in Google Analytics Realtime",
+    "scope": "Public production page only; consent required; local previews and admin excluded"
+  }
 }

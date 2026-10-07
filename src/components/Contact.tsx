@@ -162,14 +162,13 @@ export default function Contact({
             {message}
           </p>
           {url && (
-            <a
+            <button
               className="button whatsapp-ready"
-              href={url}
-              target="_blank"
-              rel="noopener noreferrer"
+              type="button"
+              onClick={() => window.open(url, "_blank", "noopener,noreferrer")}
             >
               Abrir mi consulta en WhatsApp <Icon name="diagonal" />
-            </a>
+            </button>
           )}
         </form>
       </div>

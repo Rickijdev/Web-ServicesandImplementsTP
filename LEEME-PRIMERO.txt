@@ -1,4 +1,4 @@
-NEXO AUTOMATIZACIÓN — EDICIÓN 4.1.1 · NUEVO DISEÑO
+NEXO AUTOMATIZACIÓN — EDICIÓN 4.2.0 · NUEVO DISEÑO
 
 PARA VER LA WEB
 1. Extrae todo el ZIP.
@@ -45,3 +45,12 @@ La vista de doble clic corresponde a la última compilación.
 La compilación, las interacciones DOM y la geometría se comprobaron.
 Queda pendiente la revisión visual y del render GPU en un navegador real.
 Más detalles en README.md.
+
+PARA EMPEZAR A VER LAS VISITAS
+Google Analytics está integrado con G-X1DMTV5P6N.
+1. Publica esta versión en tu repositorio/hosting.
+2. Abre la web publicada y pulsa Aceptar estadísticas.
+3. En Analytics, elige servicesandesp32 > Ver en tiempo real.
+La recogida puede tardar hasta 30 minutos en empezar.
+Las visitas locales y las de quienes rechazan no se registran.
+Este ZIP no se ha publicado automáticamente.
