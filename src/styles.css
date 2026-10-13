@@ -1335,7 +1335,7 @@ details[open] > summary > .icon {
 .founder-photo {
   width: 100%;
   height: auto;
-  aspect-ratio: 410/555;
+  aspect-ratio: 896/1209;
   object-fit: cover;
   filter: sepia(0.15) saturate(0.6);
 }

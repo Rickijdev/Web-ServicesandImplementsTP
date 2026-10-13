@@ -86,7 +86,7 @@ Este comando comprueba TypeScript, reconstruye `dist` y actualiza la vista de do
 - **Teléfono**: cambia `CONTACT` en `src/content.ts` y también el contacto del bloque `noscript` en `index.html`.
 - **Precios**: modifica `plans` en `src/content.ts`. Ajusta los importes relacionados en `Contact.tsx`, la comparación y la selección de planes de `App.tsx`, las FAQ y los metadatos de `index.html`.
 - **Colores**: modifica las variables de `:root` en `src/styles.css`. Los materiales de hardware están en `src/three/models.ts` y los colores de la alternativa ilustrada en `ModelViewer.tsx`.
-- **Fotografía de Ricky**: se conserva la original. El encuadre se hace en el SVG `founder-photo` de `App.tsx`, sin modificar el archivo fotográfico.
+- **Fotografía de Ricky**: actualizada con la imagen proporcionada en `public/assets/ricky.png` (896 × 1209). El SVG `founder-photo` de `App.tsx` respeta sus proporciones, sin modificar el archivo fotográfico.
 - **Dominio**: cambia `canonical`, `og:url` y `og:image` en `index.html`. El proyecto conserva el dominio de GitHub Pages que tenía la web original.
 
 ## Qué hace la web

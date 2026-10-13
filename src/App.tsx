@@ -347,7 +347,7 @@ export default function App() {
             <div className="founder-portrait" data-parallax="25">
               <svg
                 className="founder-photo"
-                viewBox="95 360 410 555"
+                viewBox="0 0 896 1209"
                 preserveAspectRatio="xMidYMid slice"
                 role="img"
                 aria-labelledby="ricky-title"
@@ -355,7 +355,7 @@ export default function App() {
                 <title id="ricky-title">
                   Ricky, creador de Nexo Automatización
                 </title>
-                <image href="./assets/ricky.webp" width="738" height="1600" />
+                <image href="./assets/ricky.png" width="896" height="1209" />
               </svg>
               <span className="founder-sticker">
                 Hecho con
